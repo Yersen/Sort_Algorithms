@@ -127,10 +127,11 @@
             // 
             this.BubbleSortButton.Location = new System.Drawing.Point(19, 217);
             this.BubbleSortButton.Name = "BubbleSortButton";
-            this.BubbleSortButton.Size = new System.Drawing.Size(75, 23);
+            this.BubbleSortButton.Size = new System.Drawing.Size(120, 23);
             this.BubbleSortButton.TabIndex = 6;
             this.BubbleSortButton.Text = "BubbleSort";
             this.BubbleSortButton.UseVisualStyleBackColor = true;
+            this.BubbleSortButton.Click += new System.EventHandler(this.BubbleSortButton_Click);
             // 
             // Form1
             // 

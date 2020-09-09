@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Algorithm
 {
     public class CoctailSort<T> : AlgorithmBase<T> where T : IComparable
     {
+        public CoctailSort(IEnumerable<T> items) : base(items) { }
         protected override void MakeSort()
         {
             int left = 0;

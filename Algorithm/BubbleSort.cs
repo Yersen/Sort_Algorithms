@@ -10,7 +10,7 @@ namespace Algorithm
     {
         protected override void MakeSort()
         {
-            var count = Items.Count;
+            var count = Items.Count; 
             for (int j = 0; j < count; j++)
             {
                 for (int i = 0; i < count - j - 1; i++)

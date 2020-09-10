@@ -29,11 +29,30 @@ namespace SortAlgorithms
                 {
                     var item = new SortedItem(rnd.Next(0,200),items.Count);
                     items.Add(item);
-                    panel3.Controls.Add(item.ProgressBar);
-                    panel3.Controls.Add(item.Label);
                 }
             }
+            RefreshItems();
             FillTextBox.Text = "";
+        }
+
+        private void DrawItems(List<SortedItem> items)
+        {
+            panel3.Controls.Clear();
+
+            foreach (var item in items)
+            {
+                panel3.Controls.Add(item.ProgressBar);
+                panel3.Controls.Add(item.Label);
+            }
+        }
+
+        private void RefreshItems()
+        {
+            foreach (var item in items)
+            {
+                item.Refresh();
+            }
+            DrawItems(items);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,32 +66,37 @@ namespace SortAlgorithms
             {
                 var item = new SortedItem(value,items.Count);
                 items.Add(item);
-                panel3.Controls.Add(item.ProgressBar);
-                panel3.Controls.Add(item.Label);
             }
+            RefreshItems();
             AddTextBox.Text = "";
         }
 
         private void BubbleSortButton_Click(object sender, EventArgs e)
         {
+            RefreshItems();
+
             var bubble = new BubbleSort<SortedItem>(items);
             bubble.CompareEvent += Bubble_CompareEvent;
             bubble.SwapEvent += Bubble_SwapEvent;
-            bubble.Sort();
+            var time = bubble.Sort();
+            TimeLabel.Text = "Время:" + time.Milliseconds + " ms";
+            SwapLabel.Text = "Колличество обменов:" + bubble.SwapCount;
+            CompareLabel.Text = "Колличество сравнений:" + bubble.ComparisonCount;
         }
 
         private void Bubble_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
-            var temp = e.Item1.Value;
-            e.Item1.SetValue(e.Item2.Value);
-            e.Item2.SetValue(temp);
-           panel3.Refresh();
+            var temp = e.Item1.Number;
+            e.Item1.SetPosition(e.Item2.Number);
+            e.Item2.SetPosition(temp);
+            panel3.Refresh();
         }
 
         private void Bubble_CompareEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
             e.Item1.SetColor(Color.Red);
             e.Item2.SetColor(Color.Green);
+            panel3.Refresh();
         }
     }
 }

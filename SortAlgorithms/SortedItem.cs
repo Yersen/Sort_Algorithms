@@ -13,13 +13,16 @@ namespace SortAlgorithms
         public VerticalProgressBar.VerticalProgressBar ProgressBar { get; private set; }
         public Label Label { get; private set; }
         public int Value { get; private set; }
-
+        public int Number { get; private set; }
+        public int StartNumber { get; private set; }
         public SortedItem(int value, int number)
         {
             Value = value;
+            Number = number;
+            StartNumber = number;
             ProgressBar = new VerticalProgressBar.VerticalProgressBar();
             Label = new Label();
-            var x = number * 21;
+            var x = number * 22;
             // verticalProgressBar1
             // 
             ProgressBar.BorderStyle = VerticalProgressBar.BorderStyles.Classic;
@@ -44,18 +47,31 @@ namespace SortAlgorithms
             Label.Text = Value.ToString();
         }
 
-        public void SetValue(int value)
+        public void SetPosition(int number)
         {
-            Value = value;
-            ProgressBar.Value = value;
-            Label.Text = value.ToString();
+            Number = number;
+            var x = number * 22;
+            ProgressBar.Name = "verticalProgressBar" + number;
+            ProgressBar.Location = new System.Drawing.Point(x, 4);
+            Label.Name = "label" + number;
+            Label.Location = new Point(x, 139);
+        }
+
+        public void Refresh()
+        {
+            Number = StartNumber;
+            var x = Number * 22;
+            ProgressBar.Name = "verticalProgressBar" + Number;
+            ProgressBar.Location = new System.Drawing.Point(x, 4);
+            Label.Name = "label" + Number;
+            Label.Location = new Point(x, 139);
         }
 
         public void SetColor(Color color)
         {
             ProgressBar.Color = color;
+           
         }
-
         public int CompareTo(object obj)
         {
             if(obj is SortedItem item)
@@ -66,6 +82,10 @@ namespace SortAlgorithms
             {
                 throw new ArgumentException($"obj is not {nameof(SortedItem)}", nameof(obj));
             }
+        }
+        public override string ToString()
+        {
+            return Value.ToString();
         }
     }
 }

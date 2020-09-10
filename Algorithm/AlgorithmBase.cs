@@ -24,12 +24,13 @@ namespace Algorithm
         protected void Swap(int positionA, int positionB)
         {
             if(positionA < Items.Count && positionB < Items.Count)
-            {               
+            {
+                SwapEvent?.Invoke(this, new Tuple<T, T>(Items[positionA], Items[positionB]));
+                SwapCount++;
+
                 var temp = Items[positionA];
                 Items[positionA] = Items[positionB];
-                Items[positionB] = temp;            
-                SwapCount++;
-                SwapEvent?.Invoke(this, new Tuple<T, T>(Items[positionA], Items[positionB]));
+                Items[positionB] = temp;                  
             }
         }
         public TimeSpan Sort()

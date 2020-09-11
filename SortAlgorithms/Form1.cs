@@ -73,18 +73,11 @@ namespace SortAlgorithms
 
         private void BubbleSortButton_Click(object sender, EventArgs e)
         {
-            RefreshItems();
-
             var bubble = new BubbleSort<SortedItem>(items);
-            bubble.CompareEvent += Bubble_CompareEvent;
-            bubble.SwapEvent += Bubble_SwapEvent;
-            var time = bubble.Sort();
-            TimeLabel.Text = "Время:" + time.Milliseconds + " ms";
-            SwapLabel.Text = "Колличество обменов:" + bubble.SwapCount;
-            CompareLabel.Text = "Колличество сравнений:" + bubble.ComparisonCount;
+            Btn_Click(bubble);
         }
 
-        private void Bubble_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
+        private void Algorithm_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
             var temp = e.Item1.Number;
             e.Item1.SetPosition(e.Item2.Number);
@@ -92,11 +85,51 @@ namespace SortAlgorithms
             panel3.Refresh();
         }
 
-        private void Bubble_CompareEvent(object sender, Tuple<SortedItem, SortedItem> e)
+        private void Algorithm_CompareEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
             e.Item1.SetColor(Color.Red);
             e.Item2.SetColor(Color.Green);
             panel3.Refresh();
+
+            Thread.Sleep(50);
+
+            e.Item1.SetColor(Color.Blue);
+            e.Item2.SetColor(Color.Blue);
+            panel3.Refresh();
+        }
+
+        private void CoctailSortButton_Click(object sender, EventArgs e)
+        {
+            var coctail = new CoctailSort<SortedItem>(items);
+            Btn_Click(coctail);
+        }
+
+        private void Btn_Click(AlgorithmBase<SortedItem> algorithm)
+        {
+            RefreshItems();
+            algorithm.CompareEvent += Algorithm_CompareEvent;
+            algorithm.SwapEvent += Algorithm_SwapEvent;
+            var time = algorithm.Sort();
+            TimeLabel.Text = "Время:" + time.Milliseconds + " ms";
+            SwapLabel.Text = "Колличество обменов:" + algorithm.SwapCount;
+            CompareLabel.Text = "Колличество сравнений:" + algorithm.ComparisonCount;
+        }
+
+        private void TimeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InsertSortButton_Click(object sender, EventArgs e)
+        {
+            var insert = new InsertSort<SortedItem>(items);
+            Btn_Click(insert);
+        }
+
+        private void ShellSort_Click(object sender, EventArgs e)
+        {
+            var shell = new ShellSort<SortedItem>(items);
+            Btn_Click(shell);
         }
     }
 }

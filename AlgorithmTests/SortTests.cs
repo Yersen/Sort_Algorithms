@@ -22,7 +22,7 @@ namespace Algorithm.Tests
             for (int i = 0; i < 100000; i++)
             {
                 items.Add(rnd.Next(0, 1000));
-            }
+            } 
             sorted.Clear();
             sorted.AddRange(items.OrderBy(x => x).ToArray());
         }

@@ -9,6 +9,8 @@ namespace Algorithm
     public class ShellSort<T> : AlgorithmBase<T> where T : IComparable
     {
         //public ShellSort(IEnumerable<T> items) : base(items) { }
+        public ShellSort(IEnumerable<T> items) { Items.AddRange(items); }
+        public ShellSort() { }
         protected override void MakeSort()
         {
             var step = Items.Count / 2;

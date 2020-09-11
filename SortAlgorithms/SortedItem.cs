@@ -70,7 +70,7 @@ namespace SortAlgorithms
         public void SetColor(Color color)
         {
             ProgressBar.Color = color;
-           
+            
         }
         public int CompareTo(object obj)
         {

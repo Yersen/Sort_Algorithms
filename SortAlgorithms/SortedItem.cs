@@ -15,14 +15,14 @@ namespace SortAlgorithms
         public int Value { get; private set; }
         public int Number { get; private set; }
         public int StartNumber { get; private set; }
-        public SortedItem(int value, int number)
+        public SortedItem(int value, int number)//number - номер,позиция
         {
             Value = value;
             Number = number;
             StartNumber = number;
             ProgressBar = new VerticalProgressBar.VerticalProgressBar();
             Label = new Label();
-            var x = number * 22;
+            var x = number * 22;//смещение от левого края панели
             // verticalProgressBar1
             // 
             ProgressBar.BorderStyle = VerticalProgressBar.BorderStyles.Classic;
@@ -47,7 +47,7 @@ namespace SortAlgorithms
             Label.Text = Value.ToString();
         }
 
-        public void SetPosition(int number)
+        public void SetPosition(int number)//перемещение позиции
         {
             Number = number;
             var x = number * 22;

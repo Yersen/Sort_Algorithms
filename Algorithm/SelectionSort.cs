@@ -8,7 +8,7 @@ namespace Algorithm
 {
     public class SelectionSort<T> : AlgorithmBase<T> where T : IComparable
     {
-        public SelectionSort(IEnumerable<T> items) { Items.AddRange(items); }
+        public SelectionSort(IEnumerable<T> items) : base(items) { }
 
         public SelectionSort() { }
         protected override void MakeSort()

@@ -45,6 +45,7 @@
             this.InsertSortButton = new System.Windows.Forms.Button();
             this.ShellSort = new System.Windows.Forms.Button();
             this.SelectionSortButton = new System.Windows.Forms.Button();
+            this.HeapSortBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -208,11 +209,22 @@
             this.SelectionSortButton.UseVisualStyleBackColor = true;
             this.SelectionSortButton.Click += new System.EventHandler(this.SelectionSortButton_Click);
             // 
+            // HeapSortBtn
+            // 
+            this.HeapSortBtn.Location = new System.Drawing.Point(585, 216);
+            this.HeapSortBtn.Name = "HeapSortBtn";
+            this.HeapSortBtn.Size = new System.Drawing.Size(89, 23);
+            this.HeapSortBtn.TabIndex = 14;
+            this.HeapSortBtn.Text = "HeapSort";
+            this.HeapSortBtn.UseVisualStyleBackColor = true;
+            this.HeapSortBtn.Click += new System.EventHandler(this.HeapSortBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.HeapSortBtn);
             this.Controls.Add(this.SelectionSortButton);
             this.Controls.Add(this.ShellSort);
             this.Controls.Add(this.InsertSortButton);
@@ -255,5 +267,6 @@
         private System.Windows.Forms.Button InsertSortButton;
         private System.Windows.Forms.Button ShellSort;
         private System.Windows.Forms.Button SelectionSortButton;
+        private System.Windows.Forms.Button HeapSortBtn;
     }
 }

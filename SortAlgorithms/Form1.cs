@@ -1,4 +1,5 @@
 ﻿using Algorithm;
+using Algorithm.DataStructures;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -107,6 +108,11 @@ namespace SortAlgorithms
         private void Btn_Click(AlgorithmBase<SortedItem> algorithm)
         {
             RefreshItems();
+            for (int i = 0; i < algorithm.Items.Count; i++)
+            {
+                algorithm.Items[i].SetPosition(i);
+            }
+            panel3.Refresh();
             algorithm.CompareEvent += Algorithm_CompareEvent;
             algorithm.SwapEvent += Algorithm_SwapEvent;
             var time = algorithm.Sort();
@@ -136,6 +142,12 @@ namespace SortAlgorithms
         {
             var selection = new SelectionSort<SortedItem>(items);
             Btn_Click(selection);
+        }
+
+        private void HeapSortBtn_Click(object sender, EventArgs e)
+        {
+            var heap = new Heap<SortedItem>(items);
+            Btn_Click(heap);
         }
     }
 }

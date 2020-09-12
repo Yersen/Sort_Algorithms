@@ -8,7 +8,7 @@ namespace Algorithm
 {
     public class BubbleSort<T> : AlgorithmBase<T> where T : IComparable
     {
-        public BubbleSort(IEnumerable<T> items) { Items.AddRange(items); }
+        public BubbleSort(IEnumerable<T> items):base(items) { }
 
         public BubbleSort() { }
         protected override void MakeSort()

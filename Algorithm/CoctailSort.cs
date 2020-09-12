@@ -7,8 +7,8 @@ namespace Algorithm
     {
         //public CoctailSort(IEnumerable<T> items) : base(items) { }
         //public CoctailSort() { }
-        public CoctailSort(IEnumerable<T> items) { Items.AddRange(items); }
-        public CoctailSort() { }
+        public CoctailSort(IEnumerable<T> items): base(items) { }
+    public CoctailSort() { }
         protected override void MakeSort()
         {
             int left = 0;

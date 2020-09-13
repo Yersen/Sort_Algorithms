@@ -108,7 +108,7 @@ namespace SortAlgorithms
         private void Btn_Click(AlgorithmBase<SortedItem> algorithm)
         {
             RefreshItems();
-            for (int i = 0; i < algorithm.Items.Count; i++)
+            for (int i = 0; i < algorithm.Items.Count; i++)//решение heapSort
             {
                 algorithm.Items[i].SetPosition(i);
             }
@@ -148,6 +148,12 @@ namespace SortAlgorithms
         {
             var heap = new Heap<SortedItem>(items);
             Btn_Click(heap);
+        }
+
+        private void GnomeSortButton_Click(object sender, EventArgs e)
+        {
+            var gnome = new GnomeSort<SortedItem>(items);
+            Btn_Click(gnome);
         }
     }
 }

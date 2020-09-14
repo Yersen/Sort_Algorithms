@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Algorithm
 {
-    public class RedixSort<T> : AlgorithmBase<T> where T : IComparable
+    public class LSDRedixSort<T> : AlgorithmBase<T> where T : IComparable
     {
-        public RedixSort(IEnumerable<T> items) : base(items) { }
+        public LSDRedixSort(IEnumerable<T> items) : base(items) { }
 
-        public RedixSort() { }
+        public LSDRedixSort() { }
         protected override void MakeSort()
         {
             var groups = new List<List<T>>();

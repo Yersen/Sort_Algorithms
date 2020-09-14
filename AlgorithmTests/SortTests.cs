@@ -88,8 +88,7 @@ namespace Algorithm.Tests
         [TestMethod()]
         public void TreeSortTest()
         {
-            var tree = new TreeSort<int>();
-            tree.Items.AddRange(items);
+            var tree = new Tree<int>();
             tree.Sort();
             for (int i = 0; i < items.Count; i++)
             {
@@ -128,6 +127,17 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], gnome.Items[i]);
+            }
+        }
+        [TestMethod()]
+        public void RedixSortText()
+        {
+            var redix = new RedixSort<int>();
+            redix.Items.AddRange(items);
+            redix.Sort();
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], redix.Items[i]);
             }
         }
     }

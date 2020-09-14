@@ -6,63 +6,94 @@ using System.Threading.Tasks;
 
 namespace Algorithm.DataStructures
 {
-    public class Tree<T> where T : IComparable
+    public class Tree<T> : AlgorithmBase<T> where T : IComparable
     {
-        public Node<T> Root { get; set; }
-        public int Count { get; set; }
-        public Tree()
-        {
-
-        }
+        private Node<T> Root { get; set; }
+        public int Count { get; private set; }
+        public Tree() { }
 
         public Tree(IEnumerable<T> items)
         {
-            foreach (var item in items)
+            var list = items.ToList();
+            for (int i = 0; i < list.Count; i++)
             {
-                Add(item);
+                var item = list[i];
+                Items.Add(item);
+
+                var node = new Node<T>(item, i);
+                Add(node);
             }
         }
-        public void Add(T data)
+        private void Add(Node<T> node)
         {
+            
             if (Root == null)
             {
-                Root = new Node<T>(data);
+                Root = node;
                 Count = 1;
                 return;
             }
-            Root.Add(data);
+            Add(Root,node);
             Count++;
 
         }
-        public List<T> Inorder0()
-        {
-            var list = new List<T>();
 
-            if (Root == null)
-            {
-                return list;
-            }
-            return Inorder01(Root);
-        }
-        private List<T> Inorder01(Node<T> node)
+        private void Add(Node<T> node, Node<T> newNode)
         {
-            var list = new List<T>();
+            if (Compare(node.Data, newNode.Data) == 1)
+            {
+                if (node.Left == null)
+                {
+                    node.Left = newNode;
+                }
+                else
+                {
+                    Add(node.Left, newNode);
+                }
+            }
+            else
+            {
+                if (node.Right == null)
+                {
+                    node.Right = newNode;
+                }
+                else
+                {
+                    Add(node.Right, newNode);
+                }
+            }
+        }
+
+        protected override void MakeSort()
+        {
+            var result = Inorder(Root);
+
+            Items.AddRange(result.Select(i => i.Data));
+            for(int i = 0; i < result.Count; i++)
+            {
+                Swap(i, result.Count + i);
+            }
+            Items.RemoveRange(result.Count, result.Count);
+        }
+
+        private List<Node<T>> Inorder(Node<T> node)
+        {
+            var list = new List<Node<T>>();
             if (node != null)
             {
                 if (node.Left != null)
                 {
-                    list.AddRange(Inorder01(node.Left));//AddRange(ICollection collection): добавление в список коллекции или массива
+                    list.AddRange(Inorder(node.Left));
                 }
-                list.Add(node.Data);
+
+                list.Add(node);
 
                 if (node.Right != null)
                 {
-                    list.AddRange(Inorder01(node.Right));
+                    list.AddRange(Inorder(node.Right));
                 }
-
             }
             return list;
         }
-
     }
 }

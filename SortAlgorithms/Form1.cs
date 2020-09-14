@@ -155,5 +155,11 @@ namespace SortAlgorithms
             var gnome = new GnomeSort<SortedItem>(items);
             Btn_Click(gnome);
         }
+
+        private void TreeSortBtn_Click(object sender, EventArgs e)
+        {
+            var tree = new Tree<SortedItem>(items);
+            Btn_Click(tree);
+        }
     }
 }

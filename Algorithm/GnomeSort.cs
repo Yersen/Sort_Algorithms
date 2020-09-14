@@ -17,7 +17,7 @@ namespace Algorithm
             var i = 1;
             while (i < Items.Count)
             {
-                if(i == 0 || Compare(Items[i], Items[i-1]) == 1 || Compare(Items[i], Items[i - 1]) == 0)
+                if(i == 0 || Compare(Items[i], Items[i-1]) >= 0)
                 {
                     i++;//сравниваем 1 и 0 элмт , если 1 больше идем дальше
                 }

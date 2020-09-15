@@ -15,6 +15,10 @@ namespace Algorithm
         {
             int length = GetMaxLength(Items);
             var result = SortCollection(Items, length - 1);
+            for (int i = 0; i < result.Count; i++)
+            {
+                Set(i, result[i]);
+            }
             Items = result;
         }
 

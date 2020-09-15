@@ -151,5 +151,16 @@ namespace Algorithm.Tests
                 Assert.AreEqual(sorted[i], msdRedix.Items[i]);
             }
         }
+        [TestMethod()]
+        public void MergeSortText()
+        {
+            var merge = new MergeSort<int>();
+            merge.Items.AddRange(items);
+            merge.Sort();
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], merge.Items[i]);
+            }
+        }
     }
 }

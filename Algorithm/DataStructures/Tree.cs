@@ -67,9 +67,8 @@ namespace Algorithm.DataStructures
         protected override void MakeSort()
         {
             var result = Inorder(Root);
-
-            Items.AddRange(result.Select(i => i.Data));
-            for(int i = 0; i < result.Count; i++)
+            Items.AddRange(result.Select(j => j.Data));
+            for (int i = 0; i < result.Count; i++)
             {
                 Swap(i, result.Count + i);
             }

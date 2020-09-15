@@ -189,5 +189,11 @@ namespace SortAlgorithms
             var msdRedix = new MSDRedixSort<SortedItem>(items);
             Btn_Click(msdRedix);
         }
+
+        private void MergeSortBtn_Click(object sender, EventArgs e)
+        {
+            var merge = new MergeSort<SortedItem>(items);
+            Btn_Click(merge);
+        }
     }
 }

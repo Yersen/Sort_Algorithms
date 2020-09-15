@@ -66,13 +66,11 @@ namespace Algorithm.DataStructures
 
         protected override void MakeSort()
         {
-            var result = Inorder(Root);
-            Items.AddRange(result.Select(j => j.Data));
+            var result = Inorder(Root).Select(r => r.Data).ToList() ;
             for (int i = 0; i < result.Count; i++)
             {
-                Swap(i, result.Count + i);
+                Set(i, result[i]);
             }
-            Items.RemoveRange(result.Count, result.Count);
         }
 
         private List<Node<T>> Inorder(Node<T> node)

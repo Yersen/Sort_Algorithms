@@ -20,9 +20,9 @@ namespace Algorithm.Tests
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 1000; i++)
             {
-                items.Add(rnd.Next(0, 1000));
+                items.Add(rnd.Next(0, 100));
             } 
             sorted.Clear();
             sorted.AddRange(items.OrderBy(x => x).ToArray());
@@ -88,7 +88,7 @@ namespace Algorithm.Tests
         [TestMethod()]
         public void TreeSortTest()
         {
-            var tree = new Tree<int>();
+            var tree = new Tree<int>(items);
             tree.Sort();
             for (int i = 0; i < items.Count; i++)
             {

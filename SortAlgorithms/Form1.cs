@@ -99,6 +99,21 @@ namespace SortAlgorithms
             panel3.Refresh();
         }
 
+        private void Algorithm_SetEvent(object sender , Tuple<int, SortedItem> e)
+        {
+            e.Item2.SetColor(Color.Red);
+            panel3.Refresh();
+            Thread.Sleep(20);
+
+            e.Item2.SetPosition(e.Item1);
+            panel3.Refresh();
+            Thread.Sleep(20);
+
+            e.Item2.SetColor(Color.Blue);
+            panel3.Refresh();
+            Thread.Sleep(20);
+        }
+
         private void CoctailSortButton_Click(object sender, EventArgs e)
         {
             var coctail = new CoctailSort<SortedItem>(items);
@@ -115,6 +130,7 @@ namespace SortAlgorithms
             panel3.Refresh();
             algorithm.CompareEvent += Algorithm_CompareEvent;
             algorithm.SwapEvent += Algorithm_SwapEvent;
+            algorithm.SetEvent += Algorithm_SetEvent;
             var time = algorithm.Sort();
             TimeLabel.Text = "Время:" + time.Milliseconds + " ms";
             SwapLabel.Text = "Колличество обменов:" + algorithm.SwapCount;

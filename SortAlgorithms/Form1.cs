@@ -195,5 +195,11 @@ namespace SortAlgorithms
             var merge = new MergeSort<SortedItem>(items);
             Btn_Click(merge);
         }
+
+        private void QuickSortBtn_Click(object sender, EventArgs e)
+        {
+            var merge = new MergeSort<SortedItem>(items);
+            Btn_Click(merge);
+        }
     }
 }
